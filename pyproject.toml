@@ -1,0 +1,39 @@
+[project]
+name = "fraud-desk"
+version = "0.0.1"
+description = "A multi-agent fraud and AML investigation desk on the raw Claude API, built in public over 60 days, with an honest eval against ML-only and single-agent baselines."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [{ name = "Aurimas A. Nausedas" }]
+dependencies = [
+    "duckdb>=1.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.9"]
+data = ["kaggle>=1.6"]
+
+[project.scripts]
+fraud-desk = "fraud_desk.cli:main"
+
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "S"]
+ignore = ["S101", "S608"]  # S608: SQL built from our own constant column map, never from input
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
