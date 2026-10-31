@@ -150,9 +150,7 @@ def profile(db_path: Path) -> dict[str, object]:
             """
         ).fetchone()
         formats = dict(
-            con.execute(
-                "SELECT payment_format, count(*) FROM transactions GROUP BY 1 ORDER BY 2 DESC"
-            ).fetchall()
+            con.execute("SELECT payment_format, count(*) FROM transactions GROUP BY 1 ORDER BY 2 DESC").fetchall()
         )
         tables = {r[0] for r in con.execute("SHOW TABLES").fetchall()}
         typologies = (
