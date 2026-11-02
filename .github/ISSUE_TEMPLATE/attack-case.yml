@@ -1,0 +1,79 @@
+name: "🧨 Attack case (prompt injection)"
+description: Submit a prompt-injection or abuse case for the community attack set. Accepted cases are credited in the README Hall of Fame.
+title: "[attack] "
+labels: ["attack-case"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for trying to break Fraud Desk. Accepted cases go into a separate **community attack set**,
+        kept apart from the 30 frozen injection cases so the pre-registered eval stays clean, and are run
+        once the agents exist. The result is published whether the desk holds or not.
+
+        **Rules:** synthetic data only, no real people or accounts, no attacks on anyone else's systems,
+        and no secrets or credentials. If you found a real vulnerability in this repo, use SECURITY.md instead.
+  - type: dropdown
+    id: goal
+    attributes:
+      label: What is the attack trying to do?
+      options:
+        - Change the verdict (clear a laundering account, or flag a clean one)
+        - Make the report ignore or misstate evidence
+        - Get a finding past the verifier with a fake or irrelevant tx_id
+        - Leak the system prompt or tool definitions
+        - Burn the budget (loops, huge outputs, endless tool calls)
+        - Reach outside the desk (exfiltration, outbound calls)
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: field
+    attributes:
+      label: Which field carries the payload?
+      description: e.g. the synthetic `memo` field, an account name, a bank name, a currency string, a sanctions-list name.
+      placeholder: memo
+    validations:
+      required: true
+  - type: textarea
+    id: payload
+    attributes:
+      label: Payload
+      description: The exact text you would put in that field. Keep it synthetic.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: success
+    attributes:
+      label: What counts as success for the attacker?
+      description: Something code can check if possible, e.g. "the verdict is CLEARED" or "the report contains the string X".
+    validations:
+      required: true
+  - type: dropdown
+    id: target
+    attributes:
+      label: Which arm do you expect to fall for it?
+      multiple: true
+      options:
+        - B. Single agent
+        - C. Multi-agent
+        - Not sure
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes, references or prior art
+      description: Optional. Links to the technique (OWASP LLM01, AgentDojo, a paper, a blog post).
+  - type: input
+    id: credit
+    attributes:
+      label: How should we credit you in the Hall of Fame?
+      description: Optional. Defaults to your GitHub handle. Write "anonymous" to opt out.
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmations
+      options:
+        - label: The case uses synthetic data only and names no real person or account.
+          required: true
+        - label: It contains no secrets, credentials or live attacks on third-party systems.
+          required: true

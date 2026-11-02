@@ -1,0 +1,42 @@
+name: "🧪 Test or eval idea"
+description: Suggest a test, an eval case, a metric or a failure mode the desk should be measured on.
+title: "[test] "
+labels: ["test-idea"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fraud Desk writes its evals before its agents (see docs/EVALS.md). Ideas that make the
+        measurement harder to game are the most useful kind of help.
+
+        Note: the frozen case set and the pass lines lock on Day 6. Later ideas are logged and may run as
+        an extra, clearly labelled set, but they never silently change the frozen eval.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of idea?
+      options:
+        - Unit or offline test
+        - Eval case or case-set change
+        - New metric or a sharper definition of an existing one
+        - Failure mode to watch for
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+      description: What should be checked, and why it matters for a fraud or AML desk.
+    validations:
+      required: true
+  - type: textarea
+    id: check
+    attributes:
+      label: How would we check it?
+      description: Expected input and expected result, ideally something code can assert.
+  - type: input
+    id: component
+    attributes:
+      label: Which part of the desk?
+      placeholder: loader, ML triage, orchestrator, pattern agent, network agent, sanctions agent, verifier, report writer, UI

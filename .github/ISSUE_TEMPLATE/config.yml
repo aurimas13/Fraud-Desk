@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security problem in this repo (private)
+    url: https://github.com/aurimas13/Fraud-Desk/blob/main/SECURITY.md
+    about: For anything sensitive, follow SECURITY.md instead of opening a public issue.
+  - name: Follow the build (#60DaysOfAgents)
+    url: https://github.com/aurimas13/Fraud-Desk#-follow-along
+    about: Daily posts on X, Bluesky and LinkedIn, plus the Molecule To Machine newsletter.
