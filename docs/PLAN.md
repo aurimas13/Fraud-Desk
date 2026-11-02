@@ -65,6 +65,12 @@ work, a larger model only where the eval shows it pays. Batch API for eval runs 
 | 43 | Mon 14 Dec | Security write-up post. |
 
 ## Week 7 - Google Cloud and the benchmark (Days 44-50, 15-21 Dec)
+> No Google Cloud account yet (2 Nov). Open one on **Day 37 (Tue 8 Dec)**, not earlier, so the free
+> trial credit (https://cloud.google.com/free) covers the deploy weeks; set a budget alert at USD 5 the same day.
+> If the account or billing is blocked, the fallback for the live demo is a free Hugging Face Space
+> (https://huggingface.co/docs/hub/spaces), and Day 45 becomes "Claude via the direct API, cost and latency
+> measured from the Space". The Show HN date does not move.
+
 | 44 | Tue 15 Dec | Cloud Run deploy of the API from source (time-boxed to two days). |
 | 45 | Wed 16 Dec | Claude via Vertex AI behind the same client interface; compare cost and latency. |
 | 46 | Thu 17 Dec | **Launch day**: Show HN with the live demo + repo (it must be something people can try). |
