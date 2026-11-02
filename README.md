@@ -1,6 +1,6 @@
 # Fraud Desk
 
-**A multi-agent fraud and AML investigation desk, built in public in 60 days (2 Nov - 31 Dec 2026).**
+**A multi-agent fraud and AML investigation desk, built in public in 60 days (3 Nov 2026 - 1 Jan 2027).**
 
 An alert comes in. A machine-learning model decides whether it is worth a look. An orchestrator written
 on the raw Claude API sends specialist agents to investigate in parallel: one reads the transaction

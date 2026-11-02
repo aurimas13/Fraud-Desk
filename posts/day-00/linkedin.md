@@ -1,6 +1,6 @@
 100 Days With AI ended on 19 October. Tomorrow a new one starts, shorter and harder: 60 days, one project.
 
-🔎 Fraud Desk: a multi-agent fraud and AML investigation desk, built in public from 2 November to 31 December.
+🔎 Fraud Desk: a multi-agent fraud and AML investigation desk, built in public from 3 November to 1 January.
 
 How it will work:
 (1) A machine-learning model triages 5 million synthetic transactions.

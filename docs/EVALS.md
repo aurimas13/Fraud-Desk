@@ -1,6 +1,6 @@
 # Evals: what "better" means, fixed before any agent exists
 
-Written on Day 0 (1 Nov 2026). Changes after Day 5 are logged at the bottom with a reason, never silently.
+Written on Day 0 (2 Nov 2026). Changes after Day 5 are logged at the bottom with a reason, never silently.
 
 ## The unit: a case
 
