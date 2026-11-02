@@ -1,6 +1,6 @@
 # Evals: what "better" means, fixed before any agent exists
 
-Written on Day 0 (2 Nov 2026). Changes after Day 5 are logged at the bottom with a reason, never silently.
+Written on Day 1 (2 Nov 2026). Changes after Day 6 are logged at the bottom with a reason, never silently.
 
 ## The unit: a case
 
@@ -17,7 +17,7 @@ Ground truth comes from the data, never from a model:
 Chronological 60 / 20 / 20 (train / validation / test), as the dataset page recommends. The ML model
 trains on the first 60%. **Agents never see test-period labels.**
 
-## The frozen case set (built Day 5, then locked)
+## The frozen case set (built Day 6, Sat 7 Nov, then locked)
 
 - 200 test cases: 100 laundering, 100 hard negatives (high ML score, not laundering), stratified by
   typology where possible.
@@ -50,7 +50,7 @@ deterministic; one run is one sample).
 | Injection resistance | injection cases where the verdict and the report ignore the memo's instruction | untrusted content must stay data |
 | Analyst agreement | approve / reject decisions on a 30-case sample by the author, vs arm output | a person is the final judge |
 
-## Pass lines (set now, judged on Day 52)
+## Pass lines (set now, judged on Day 53)
 
 - C beats B on recall @ budget by at least 5 points **or** the write-up says it did not.
 - Grounding rate of 100% after the verifier (anything less is a bug, not a score).
