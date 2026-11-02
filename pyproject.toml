@@ -12,7 +12,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.9"]
-data = ["kaggle>=1.6"]
+data = ["kaggle>=1.6", "six"]  # kaggle 2.2.5 imports six without declaring it
 
 [project.scripts]
 fraud-desk = "fraud_desk.cli:main"

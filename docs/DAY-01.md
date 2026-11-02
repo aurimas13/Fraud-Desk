@@ -1,38 +1,53 @@
-# Day 0 and Day 1, step by step
+# Getting started: tonight (Mon 2 Nov) and Day 2 (Tue 3 Nov)
 
-## Day 0 - Mon 2 Nov (set-up, about 1.5 h)
-1. **Kaggle token**: kaggle.com -> Settings -> API -> *Create New Token*; move the file:
-   `mkdir -p ~/.kaggle && mv ~/Downloads/kaggle.json ~/.kaggle/ && chmod 600 ~/.kaggle/kaggle.json`
-2. **Accept the dataset terms** once in the browser: open the IBM AML dataset page on Kaggle and click
-   *Download* or accept its licence (the API refuses until you have).
-3. **Anthropic spend limit**: console -> Settings -> Limits -> set a monthly limit (USD 25 covers Nov;
-   raise to the USD 50 total in Dec). Create a key named `fraud-desk`; keep it in `.env`, never in code.
-4. `cd ~/Desktop/Brain/programming-channel/Process/fraud-desk && make setup && make test`
-5. Read the README, docs/PLAN.md and docs/EVALS.md once; change anything you disagree with **today**,
-   because EVALS.md locks on Day 5.
-6. **Download the data today** so tomorrow is not blocked: `make data`, then step 2 of Day 1 below.
-   The repo already exists (github.com/aurimas13/Fraud-Desk); pin it on your GitHub profile.
-7. Post the Day 0 announcement (posts/day-00) on X, Bluesky, Threads and LinkedIn.
+Numbering: **Day 1 = Mon 2 Nov** (the foundation already in this repo); Day N's post goes out at 06:50 EET
+the next morning, so Day 1 posts Tue 3 Nov and Day 60 (Thu 31 Dec) posts on New Year's Day.
 
-## Day 1 - Tue 3 Nov (about 2 h, finish by 21:00)
-06:50 the launch post goes out on X and Bluesky automatically; at ~07:00 paste the LinkedIn launch
-post (Gmail draft "Fraud Desk LAUNCH - LinkedIn") and the Threads text by hand.
+## Tonight - Mon 2 Nov (about 1 h)
+1. **Kaggle account and token.** Sign in at kaggle.com, then pick the easiest of these:
+   - **Browser login (simplest):** `cd ~/Desktop/Brain/programming-channel/Process/fraud-desk && make setup && .venv/bin/kaggle auth login`
+     and approve in the browser.
+   - **Token:** https://www.kaggle.com/settings/api, then **API**, then **Generate New Token**. Save the token
+     to `~/.kaggle/access_token` (`mkdir -p ~/.kaggle && chmod 700 ~/.kaggle`, paste the token into the file
+     with your editor, then `chmod 600 ~/.kaggle/access_token`).
+   - **Legacy:** on the same page, **Create Legacy API Key** gives `kaggle.json`. Move it to
+     `~/.kaggle/kaggle.json` and `chmod 600` it.
+   Never paste the token into a chat or commit it.
+2. **Accept the dataset terms once:** open
+   https://www.kaggle.com/datasets/ealtman2019/ibm-transactions-for-anti-money-laundering-aml and click
+   **Download**, or accept the licence prompt. Until you do, the API refuses the download (403).
+3. **Download now, so tomorrow is not blocked:** `make data` (about 500 MB). Then
+   `ls -lh data/raw` should show `HI-Small_Trans.csv` and `HI-Small_Patterns.txt`.
+   - **If it fails:** a 401 means the token is wrong or missing (redo step 1). A 403 means the terms
+     are not accepted yet (redo step 2).
+   - **Last resort:** on the dataset page's **Data Explorer**, download just those two files by hand into
+     `data/raw/`. The loader does not care how they arrived.
+4. **Anthropic:** the monthly spend limit you set is already a hard cap; requests are refused once it
+   is reached. Also add an **email notification at USD 10**, and create a key named `fraud-desk` kept
+   only in `.env` (gitignored).
+5. **Hacker News:** create an account today (news.ycombinator.com). Make a few genuine comments over the
+   coming weeks, so the account is six weeks old with some karma by the Show HN post (Thu 17 Dec).
 
-1. `make data` if you did not finish it yesterday (HI-Small_Trans.csv ~500 MB + HI-Small_Patterns.txt).
-2. **Check the real file against the code's assumptions** (5 minutes, do not skip):
+## Day 2 - Tue 3 Nov (about 2 h, finish by 21:00)
+At 06:50 the Day 1 launch post goes out on X and Bluesky (and Threads, if its API works by then). At
+~07:00, paste the LinkedIn post from the Gmail draft "Fraud Desk LAUNCH". Then:
+
+1. **Check the real file against the code's assumptions** (5 minutes, do not skip):
    `head -3 data/raw/HI-Small_Trans.csv` and `head -5 data/raw/HI-Small_Patterns.txt`.
-   Expected: 11 columns with two called "Account", timestamps like `2022/09/01 00:20`, pattern blocks
-   opening with `BEGIN LAUNDERING ATTEMPT - <TYPOLOGY>`. If anything differs: fix the fixture in
+   Expected: 11 columns with two called "Account", timestamps like `2022/09/01 00:20`, and pattern blocks
+   opening with `BEGIN LAUNDERING ATTEMPT - <TYPOLOGY>`. If anything differs, fix the fixture in
    tests/fixtures first, watch the test fail, then fix the loader.
-3. `time make db` - note the seconds.
-4. `make profile > /tmp/profile.json` and read it: about 5.1K laundering of 5M? If not, stop and find out
-   why before posting anything.
-5. Commit and push your code (`Day 1: data in - HI-Small in DuckDB with tx_id`); check CI is green.
-6. **Write the day note before 21:00**: copy `Inputs/fraud-desk/notes/TEMPLATE.md` (in the Brain
-   programming-channel) to `Inputs/fraud-desk/notes/2026-11-03.md` and fill in: shipped, ONE number
-   (e.g. rows, laundering ratio, build seconds), ONE lesson.
-7. Done. At 21:00 the prep job turns your commits + note into the Day 1 posts, logs the day in the
-   README, and leaves the LinkedIn draft in Gmail. Wed 4 Nov 06:50 it posts; you paste LinkedIn at 07:00.
-   Late? Commit + write the note before 05:00 and the catch-up run builds it.
+2. `time make db` and note the seconds.
+3. `make profile > /tmp/profile.json` and read it. Is it about 5.1K laundering of 5M? If not, stop and
+   find out why before anything is posted.
+4. Commit and push your code (`Day 2: data in - HI-Small in DuckDB with tx_id`) and check CI is green.
+5. **Write the day note before 21:00.** Copy `Inputs/fraud-desk/notes/TEMPLATE.md` (in the Brain
+   programming-channel) to `Inputs/fraud-desk/notes/2026-11-03.md` and fill in:
+   - what shipped;
+   - ONE number (rows, laundering ratio or build seconds);
+   - ONE lesson.
+6. That's it. At 21:00 the prep job turns your commits and note into the Day 2 posts, logs the day in
+   the README and leaves the LinkedIn draft in Gmail. Wed 4 Nov at 06:50 the posts go out.
 
-The same rhythm holds for all 60 days: **build, commit, note by 21:00.**
+The rhythm for all 60 days: **build, commit, push, note by 21:00.** Running late? Finish before going to
+bed: the 05:00 catch-up builds the day if the Mac is awake then.
