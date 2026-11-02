@@ -13,7 +13,7 @@ Then the honest part: the same cases are run three ways (ML only, one agent, man
 publishes recall, false positives, cost per case, latency, grounding and prompt-injection resistance for
 each, including where the multi-agent version loses.
 
-> Status: **Day 0 of 60.** Nothing below the line "Plan" exists yet. Follow along: one commit and one post a day.
+> Status: **Day 0 of 60.** Launch: Tue 3 Nov. Follow along: one commit and one post a day (#60DaysOfAgents), and the [build log](#build-log) below.
 
 ## Why
 
@@ -62,6 +62,14 @@ make test           # offline, no API key, no dataset needed
 analyst UI, red-teaming, deploy, the three-way comparison, write-up. Day by day in
 [docs/PLAN.md](docs/PLAN.md). What "better" means is fixed before any agent exists, in
 [docs/EVALS.md](docs/EVALS.md). Every source this project leans on is in [docs/SOURCES.md](docs/SOURCES.md).
+
+## Build log
+
+One row per day, written the evening the work ships; the full notes are in [docs/LOG.md](docs/LOG.md).
+
+| Day | Date | Title | Shipped | Link |
+|---|---|---|---|---|
+| 0 | 2 Nov | Launch | Plan, evals spec, data loader, CI | [log](docs/LOG.md#day-0---launch) |
 
 ## Rules this project keeps
 
