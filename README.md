@@ -1,6 +1,6 @@
 # Fraud Desk
 
-**A multi-agent fraud and AML investigation desk, built in public in 60 days (3 Nov 2026 - 1 Jan 2027).**
+**A multi-agent fraud and AML investigation desk, built in public in 60 days (2 Nov - 31 Dec 2026, posted every morning until 1 Jan 2027).**
 
 An alert comes in. A machine-learning model decides whether it is worth a look. An orchestrator written
 on the raw Claude API sends specialist agents to investigate in parallel: one reads the transaction
@@ -13,7 +13,7 @@ Then the honest part: the same cases are run three ways (ML only, one agent, man
 publishes recall, false positives, cost per case, latency, grounding and prompt-injection resistance for
 each, including where the multi-agent version loses.
 
-> Status: **Day 0 of 60.** Launch: Tue 3 Nov. Follow along: one commit and one post a day (#60DaysOfAgents), and the [build log](#build-log) below.
+> Status: **Day 1 of 60.** Launched Tue 3 Nov. Follow along: one commit and one post a day (#60DaysOfAgents), and the [build log](#build-log) below.
 
 ## Why
 
@@ -46,7 +46,7 @@ labelled, plus a patterns file naming the typology of each laundering attempt (A
 [arXiv:2306.16424](https://arxiv.org/abs/2306.16424)). Licence CDLA-Sharing 1.0: **the data is downloaded
 by script and never committed here.** All data is synthetic; no real person or account appears.
 
-## Run it (Day 1)
+## Run it
 
 ```bash
 make setup          # uv venv + deps
@@ -69,7 +69,7 @@ One row per day, written the evening the work ships; the full notes are in [docs
 
 | Day | Date | Title | Shipped | Link |
 |---|---|---|---|---|
-| 0 | 2 Nov | Launch | Plan, evals spec, data loader, CI | [log](docs/LOG.md#day-0---launch) |
+| 1 | 2 Nov | Foundation | Loader with stable `tx_id`, 4 offline tests, 60-day plan, eval spec, CI | [log](docs/LOG.md#day-1---foundation) |
 
 ## Rules this project keeps
 
